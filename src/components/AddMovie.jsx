@@ -28,7 +28,9 @@ class AddMovie extends React.Component {
 
   onClickAddMovie() {
     const { onClick } = this.props;
-    onClick(this.state);
+    const { rating } = this.state;
+    const newState = Object.assign(this.state);
+    newState.rating = onClick({ ...this.state, rating: parseInt(rating, 10) });
 
     this.setState({
       subtitle: '',
